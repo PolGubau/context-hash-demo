@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { ContextMap } from "../db";
 import { prepareState } from "../utils/State";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 import { useHash } from "../hooks/useHash";
 
 type Thing = {
@@ -35,7 +35,8 @@ async function getThings() {
 	return parsedContexts;
 }
 export const Aside = () => {
-	const { updateHash } = useHash();
+	const { hash, updateHash } = useHash();
+
 	const [things, setThings] = useState<Thing[]>([]);
 	useEffect(() => {
 		getThings().then((myThings) => {
@@ -57,18 +58,18 @@ export const Aside = () => {
 			<ul>
 				{things.map((thing) => (
 					<li key={thing.hash}>
-						<NavLink
+						<Link
 							to={`#${thing.hash}`}
+							className={`${
+								hash === thing.hash ? "text-red-500" : "text-black"
+							}`}
 							onClick={() => updateHash(thing.hash)}
-							className={({ isActive }) =>
-								isActive ? "text-red-500" : "text-black"
-							}
 						>
 							{thing.name}
-						</NavLink>
+						</Link>
 					</li>
 				))}
-			</ul>
+			</ul>{" "}
 		</aside>
 	);
 };
