@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { ContextMap } from "../db";
+import type { ContextMap } from "../types";
 import { prepareState } from "../utils/State";
 import { Link } from "react-router";
 import { useHash } from "../hooks/useHash";
@@ -22,6 +22,12 @@ async function getThings() {
 			name: "Bob",
 			age: 22,
 			email: "bob@random.com",
+		},
+		{
+			hash: "abc987654322",
+			name: "Manuel",
+			age: 45,
+			email: "Manuel@almato.com",
 		},
 	];
 
@@ -61,7 +67,7 @@ export const Aside = () => {
 						<Link
 							to={`#${thing.hash}`}
 							className={`${
-								hash === thing.hash ? "text-red-500" : "text-black"
+								hash === thing.hash ? "text-red-800" : "text-black"
 							}`}
 							onClick={() => updateHash(thing.hash)}
 						>

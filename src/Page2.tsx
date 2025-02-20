@@ -6,7 +6,7 @@ function Page2() {
 	const data = retrieveState(hash);
 	return (
 		<div>
-			<h1>Page 2: Details or smt from hash</h1>
+			<h1>Page 2: Details or smt</h1>
 			{data ? (
 				<p>
 					Retrieved Data from hash:

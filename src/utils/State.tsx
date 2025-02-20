@@ -1,4 +1,4 @@
-import type { ContextMap } from "../db";
+import type { ContextMap } from "../types";
 
 async function calculateHash(input: string): Promise<string> {
 	const encoder = new TextEncoder();
