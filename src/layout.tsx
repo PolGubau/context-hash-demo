@@ -1,9 +1,20 @@
-import { NavLink, Outlet } from "react-router";
+import { NavLink, Outlet, useLocation } from "react-router";
 import { useHash } from "./hooks/useHash";
 import { Aside } from "./components/aside";
+import { useEffect } from "react";
 
 export const Layout = () => {
-	const { hash } = useHash();
+	const { hash, data } = useHash();
+	const location = useLocation();
+
+	useEffect(() => {
+		const titleMap: Record<string, string> = {
+			"/": "Home ",
+			"/page2": "List ",
+		};
+		const newTitle = `${titleMap[location.pathname]} of ${data?.name ?? "Nobody :("}`;
+		document.title = newTitle;
+	}, [location.pathname, hash]);
 
 	return (
 		<div className="grid grid-cols-[4fr_1fr] bg-neutral-100 h-screen ">
@@ -19,7 +30,7 @@ export const Layout = () => {
 							Page 1
 						</NavLink>
 						<NavLink
-							to={`page2/#${hash}`}
+							to={`/page2#${hash}`}
 							className={({ isActive }) =>
 								isActive ? "text-red-500" : "text-black"
 							}
@@ -34,7 +45,7 @@ export const Layout = () => {
 					<Outlet />
 				</div>
 			</main>
-			<Aside/>
+			<Aside />
 		</div>
 	);
 };

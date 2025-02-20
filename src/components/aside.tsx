@@ -29,6 +29,12 @@ async function getThings() {
 			age: 45,
 			email: "Manuel@almato.com",
 		},
+		{
+			hash: "mno987654323",
+			name: "Tamir",
+			age: 42,
+			email: "tamir@meona.com",
+		},
 	];
 
 	const parsedContexts: Thing[] = await Promise.all(
@@ -50,7 +56,7 @@ export const Aside = () => {
 		});
 	}, []);
 	return (
-		<aside className="h-full bg-neutral-200 border-l-2 border-neutral-500 px-4 flex flex-col gap-2 relative prose">
+		<aside className="h-full bg-neutral-200 border-l-2 border-neutral-500 p-4 gap-2 relative prose grid grid-rows-[1fr_auto]">
 			<button
 				className="absolute top-2 right-2 w-10 h-10 rounded-full bg-neutral-500 text-white"
 				type="button"
@@ -60,22 +66,33 @@ export const Aside = () => {
 			>
 				X
 			</button>
-			<h2>Contexts:</h2>
-			<ul>
-				{things.map((thing) => (
-					<li key={thing.hash}>
-						<Link
-							to={`#${thing.hash}`}
-							className={`${
-								hash === thing.hash ? "text-red-800" : "text-black"
-							}`}
-							onClick={() => updateHash(thing.hash)}
-						>
-							{thing.name}
-						</Link>
-					</li>
-				))}
-			</ul>{" "}
+			<header>
+				<h2>Contexts:</h2>
+				<ul>
+					{things.map((thing) => (
+						<li key={thing.hash}>
+							<Link
+								to={`#${thing.hash}`}
+								className={`${
+									hash === thing.hash ? "text-red-800" : "text-black"
+								}`}
+								onClick={() => updateHash(thing.hash)}
+							>
+								{thing.name}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</header>
+			<footer className="not-prose">
+				<button
+					onClick={() => updateHash("")}
+					type="button"
+					className="p-2 bg-neutral-300 w-full text-neutral-800 hover:bg-neutral-400"
+				>
+					Clear hash (idk why you would do that)
+				</button>
+			</footer>
 		</aside>
 	);
 };
