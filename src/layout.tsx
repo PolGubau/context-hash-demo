@@ -14,7 +14,7 @@ export const Layout = () => {
 		};
 		const newTitle = `${titleMap[location.pathname]} of ${data?.name ?? "Nobody :("}`;
 		document.title = newTitle;
-	}, [location.pathname, hash]);
+	}, [location.pathname, data?.name]);
 
 	return (
 		<div className="grid grid-cols-[4fr_1fr] bg-neutral-100 h-screen ">
