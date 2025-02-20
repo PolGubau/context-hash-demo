@@ -16,6 +16,12 @@ function Page1() {
 			) : (
 				<p>No data found for the given hash.</p>
 			)}
+
+			<div className="outline">
+				This is cool, we have our common hash that searches in the local storage
+				for the data. Works fine but because we are retrieving exactly the same
+				data we want to see. Will always be like that?
+			</div>
 		</div>
 	);
 }
