@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import type { ContextMap } from "../types";
-import { prepareState } from "../utils/State";
 import { Link } from "react-router";
+import { FROM_API } from "../constants/defaultContext";
 import { useHash } from "../hooks/useHash";
+import { prepareState } from "../utils/State";
 
 type Thing = {
 	name: string;
@@ -10,35 +10,8 @@ type Thing = {
 };
 
 async function getThings() {
-	const fromApi: ContextMap[] = [
-		{
-			hash: "ded987654320",
-			name: "Alice",
-			age: 20,
-			email: "alice@random.com",
-		},
-		{
-			hash: "xyz987654321",
-			name: "Bob",
-			age: 22,
-			email: "bob@random.com",
-		},
-		{
-			hash: "abc987654322",
-			name: "Manuel",
-			age: 45,
-			email: "Manuel@almato.com",
-		},
-		{
-			hash: "mno987654323",
-			name: "Tamir",
-			age: 42,
-			email: "tamir@meona.com",
-		},
-	];
-
 	const parsedContexts: Thing[] = await Promise.all(
-		fromApi.map(async (thing) => ({
+		FROM_API.map(async (thing) => ({
 			name: thing.name,
 			hash: await prepareState(thing),
 		})),

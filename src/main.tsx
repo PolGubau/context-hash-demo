@@ -13,7 +13,6 @@ ReactDOM.createRoot(root!).render(
 			<Route path="/" element={<Layout />}>
 				<Route index element={<Page1 />} />
 				<Route path="page2" element={<Page2 />} />
-				{/* <Route path="*" element={<div>404</div>} /> */}
 			</Route>
 		</Routes>
 	</BrowserRouter>,
