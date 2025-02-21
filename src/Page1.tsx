@@ -6,6 +6,23 @@ function Page1() {
 		<div>
 			<h1>Page 1: List or smt</h1>
 
+			<h2>Where is the context?</h2>
+			<p>
+				The context is now stored in IndexDB with hash as key, it's also
+				encrypted to have a great debugging experience.
+			</p>
+			<div>
+				To see the context data:
+				<ul>
+					<li>Open the dev tools and go to the "Application" tab</li>
+					<li>Check under IndexedDB</li>
+					<li>
+						Search the database named <b>mesalvo</b> and Table called{" "}
+						<b>contexts</b>
+					</li>
+				</ul>
+			</div>
+
 			{data ? (
 				<div>
 					Retrieved Data from hash:

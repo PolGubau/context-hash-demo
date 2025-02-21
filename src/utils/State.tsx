@@ -1,7 +1,7 @@
 import type { Context } from "../types";
 import { dbAction } from "./db-interactions";
 
-const SECRET_KEY = import.meta.env.VITE_SECRET_KEY || "default_secret";
+const SECRET_KEY = import.meta.env.VITE_CONTEXT_ENCRYPT_KEY || "default_secret";
 
 async function deriveKey(secret: string) {
 	const encoder = new TextEncoder();
